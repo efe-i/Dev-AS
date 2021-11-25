@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_APOLLOSHIELD ApolloShield)
+
+FIND_PATH(
+    APOLLOSHIELD_INCLUDE_DIRS
+    NAMES ApolloShield/api.h
+    HINTS $ENV{APOLLOSHIELD_DIR}/include
+        ${PC_APOLLOSHIELD_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    APOLLOSHIELD_LIBRARIES
+    NAMES gnuradio-ApolloShield
+    HINTS $ENV{APOLLOSHIELD_DIR}/lib
+        ${PC_APOLLOSHIELD_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(APOLLOSHIELD DEFAULT_MSG APOLLOSHIELD_LIBRARIES APOLLOSHIELD_INCLUDE_DIRS)
+MARK_AS_ADVANCED(APOLLOSHIELD_LIBRARIES APOLLOSHIELD_INCLUDE_DIRS)
+

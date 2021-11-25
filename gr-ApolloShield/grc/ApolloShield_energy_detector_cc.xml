@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<block>
+  <name>energy_detector_cc</name>
+  <key>ApolloShield_energy_detector_cc</key>
+  <category>[ApolloShield]</category>
+  <import>import ApolloShield</import>
+  <make>ApolloShield.energy_detector_cc($size, $threshold, $tag_key)</make>
+	<param>
+		<name>avg_size</name>
+		<key>size</key>
+		<value>1000</value>
+		<type>int</type>
+        </param>
+	<param>
+		<name>threshold</name>
+		<key>threshold</key>
+		<value>0.004</value>
+		<type>float</type>
+	</param>
+	<param>
+		<name>tag</name>
+		<key>tag_key</key>
+		<value>"avg_energy"</value>
+		<type>string</type>
+	</param>
+	<sink>
+		<name>in</name>
+		<type>complex</type>
+		<vlen>1</vlen>
+	</sink>
+	<source>
+		<name>out</name>
+		<type>complex</type>
+		<vlen>1</vlen>
+	</source>
+</block>
